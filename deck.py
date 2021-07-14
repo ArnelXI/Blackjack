@@ -2,8 +2,8 @@ import random
 import card
 from pathlib import Path
 
-Class Deck:
-    def __init__:
+class Deck:
+    def __init__(self):
         deck = []
         img_back = Path('carte_back')
         img_front = Path('carte_front')
@@ -11,19 +11,20 @@ Class Deck:
         #adding the card to the Deck
         for i in range(0,12):
             for i in range(0,3):
-                deck.append(Card(img_back,img_front,numerik_value))
+                deck.append(card(img_back,img_front,numerik_value))
             numerik_value = numerik_value + 1
         for in range(0,3):
-            deck.append(Card(img_back,img_front,"AS"))
+            deck.append(card(img_back,img_front,"AS"))
     
     def serve(self):
         hand = []
         for i in range(0,1):
-            hand.append(random.choice(self.deck))
+            choice = random.choice(self.deck)
+            hand.append(choice)
+            self.deck.pop(choice)
         return hand
     
     def hit(self):
-        return randonm.choice(self.deck)
-    
-    
-            
+        choice = random.choice(self.deck)
+        self.deck.pop(choice)
+        return choice
